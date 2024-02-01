@@ -1,8 +1,11 @@
 let express = require("express");
+let bodyParser = require("body-parser");
 let app = express();
 
 const publicPath = __dirname + "/public";
 const filePath = __dirname + "/views/index.html";
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(function (req, res, next) {
   console.log(req.method + " " + req.path + " - " + req.ip);
