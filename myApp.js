@@ -3,6 +3,10 @@ let app = express();
 
 const publicPath = __dirname + "/public";
 const filePath = __dirname + "/views/index.html";
+app.use(function (req, res, next) {
+  console.log(req.method + " " + req.path + " - " + req.ip);
+  next();
+});
 app.use("/public", express.static(publicPath));
 app.get("/", function (req, res) {
   res.sendFile(filePath);
